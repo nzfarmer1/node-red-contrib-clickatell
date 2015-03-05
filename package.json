@@ -1,0 +1,30 @@
+{
+    "name": "node-red-clickatell",
+    "description": "SMS output node",
+    "version": "0.1.0",
+    "dependencies": {
+        "request": "~2.42.0"
+    },
+    "contributors": [
+        {
+            "name": "Anupam Datta",
+            "email": "adbd04@gmail.com"
+            
+        },
+        {
+            "name": "Andrew McClure",
+            "email": "andrew@southweb.co.nz",
+            "url": "http://agsense.co.nz"
+        }
+    ],
+    "maintainers": [
+        {
+            "name": "Andrew McClure",
+            "email": "andrew@southweb.co.nz"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nzfarmer1/node-red-clickatell.git"
+    }
+}

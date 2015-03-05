@@ -1,0 +1,67 @@
+
+
+
+<script type="text/x-red" data-template-name="sms-out">
+    <div class="form-row">
+        <label for="username"><i class="username"></i> Username</label>
+        <input type="text" id="node-input-username" placeholder="Clickatell User Name">
+    </div>
+
+
+
+
+    
+    <div class="form-row">
+        <label for="password"><i class="password"></i> Password</label>
+        <input type="password" id="node-input-password" placeholder="Clickatell Password">
+    </div>
+    <div class="form-row">
+        <label for="api_id"><i class="api_id"></i> API ID</label>
+        <input type="password" id="node-input-api_id" placeholder="Clickatell API ID">
+    </div>
+
+    <div class="form-row">
+        <label for="sms_default"><i class="sms_default"></i> SMS (text)</label>
+        <input type="text" id="node-input-sms_default" placeholder="Text of SMS message" maxlength="160">
+    </div>
+
+    <div class="form-row">
+        <label for="mobile_default"><i class="mobile_default"></i> Mobile No.</label>
+        <input type="number" id="node-input-mobile_default" placeholder="Mobile Number (digits only)" maxlength="12">
+    </div>
+    
+</script>
+
+
+<script type="text/x-red" data-help-name="sms-out">
+   <p>Clickatell SMS node which sends an SMS to the destination number from the given topic in msg</p>
+   <p>Inputs:
+    <ul><li>override mobile number with msg.topic</li>
+    <li>override text to send with msg.payload</li>
+   </ul>
+   <p>Outputs result of send as string for logging purposes</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('sms-out',{
+        category: 'output',      // the palette category
+        color: '#1076A8',
+        icon: "clickatell.png",
+        defaults: {             // defines the editable properties of the node
+            username: {value:"", required:true},   //  along with default values.
+            password: {value:"", required:true},
+            api_id:   {value:"", required:true},
+            mobile_default: {value:"", required:false},
+            sms_default: {value:"", required:false}
+        },
+        inputs:1,               // set the number of inputs - only 0 or 1
+        outputs:1,              // set the number of outputs - 0 to n
+        // set the icon (held in icons dir below where you save the node)
+        label: function() {     // sets the default label contents
+            return this.name||this.topic||"clickatell";
+        },
+        labelStyle: function() { // sets the class to apply to the label
+            return this.name?"node_label_italic":"";
+        },
+    });
+</script>
