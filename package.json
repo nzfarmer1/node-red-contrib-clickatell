@@ -8,8 +8,8 @@
     "keywords": [ "node-red","sms","clickatell" ],
     "node-red" :{
        "nodes":{
-		"clickatell":"clickatell/clickatell.js""
-	},
+		"clickatell":"clickatell/clickatell.js"
+	}
     },
     "contributors": [
         {
