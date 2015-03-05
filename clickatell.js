@@ -61,8 +61,8 @@ module.exports = function(RED) {
         this.mobile_default = n.mobile_default;
 
         node.on('input', function(msg) {
-            var number = (msg.topic == null) ? n.mobile_default : msg.topic;
-            var text = (msg.payload == null) ? n.sms_default : msg.payload;
+            var number = msg.topic ||  n.mobile_default;
+            var text = msg.payload ||  n.sms_default;
 
             if (/\D/.test(number)) {
                 node.warn("Destination Number: " + numvalidator + "  contains invalid characters. Please enter a valid mobile number");
