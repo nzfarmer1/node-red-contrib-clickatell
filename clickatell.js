@@ -74,7 +74,7 @@ module.exports = function(RED) {
                return; 
             } 
 
-            var url = "http://api.clickatell.com/http/sendmsg?user="+n.username+"&password="+n.password+"&api_id="+n.api_id+"&to="+number+"&text="+text;
+            var url = "http://api.clickatell.com/http/sendmsg?user="+n.username+"&password="+n.password+"&api_id="+n.api_id+"&to="+number+"&text="+encodeURIComponent(text);
             if (DEBUG){
                 console.log("Clickatel : "+number+" & sms : "+text);
             }
