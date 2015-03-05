@@ -4,6 +4,7 @@ module.exports = function(RED) {
     "use strict";
     
     var DEBUG   = false;
+    var MAXLEN  = 160;
     var request = require('request');
 
     function ClickatellNode(n) {
@@ -60,7 +61,6 @@ module.exports = function(RED) {
         this.mobile_default = n.mobile_default;
 
         node.on('input', function(msg) {
-            var maxlen  = 160;
             var number = (msg.topic == null) ? n.mobile_default : msg.topic;
             var text = (msg.payload == null) ? n.sms_default : msg.payload;
 
@@ -69,8 +69,8 @@ module.exports = function(RED) {
                 return;
             }
             
-            if (text.length > maxlen) {
-               node.warn("Message length is: " + text.length + ", which exceeds the max SMS message length ("+maxlen+") by : " + (text.length - maxlen));
+            if (text.length > MAXLEN) {
+               node.warn("Message length is: " + text.length + ", which exceeds the max SMS message length ("+MAXLEN+") by : " + (text.length - MAXLEN));
                return; 
             } 
 
