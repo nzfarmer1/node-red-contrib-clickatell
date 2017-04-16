@@ -3,33 +3,31 @@
 
 <script type="text/x-red" data-template-name="sms-out">
     <div class="form-row">
-        <label for="username"><i class="username"></i> Username</label>
+        <label for="username"><i class="username"></i> API Username</label>
         <input type="text" id="node-input-username" placeholder="Clickatell User Name">
     </div>
 
-
-
-
     
     <div class="form-row">
-        <label for="password"><i class="password"></i> Password</label>
+        <label for="password"><i class="password"></i> API Password</label>
         <input type="password" id="node-input-password" placeholder="Clickatell Password">
     </div>
     <div class="form-row">
         <label for="api_id"><i class="api_id"></i> API ID</label>
-        <input type="password" id="node-input-api_id" placeholder="Clickatell API ID">
+        <input type="text" id="node-input-api_id" placeholder="Clickatell API ID">
     </div>
 
     <div class="form-row">
-        <label for="sms_default"><i class="sms_default"></i> SMS (text)</label>
+        <label for="mobile_default" title="Can be entered as topic"><i class="mobile_default"></i> Mobile No.</label>
+        <input type="text" id="node-input-mobile_default" placeholder="Mobile Number" maxlength="12">
+    </div>
+    
+    <div class="form-row">
+        <label for="sms_default" title="Can be entered as payload"><i class="sms_default"></i> SMS (text)</label>
+ 
         <input type="text" id="node-input-sms_default" placeholder="Text of SMS message" maxlength="160">
     </div>
 
-    <div class="form-row">
-        <label for="mobile_default"><i class="mobile_default"></i> Mobile No.</label>
-        <input type="number" id="node-input-mobile_default" placeholder="Mobile Number (digits only)" maxlength="12">
-    </div>
-    
 </script>
 
 

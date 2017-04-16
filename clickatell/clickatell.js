@@ -3,7 +3,7 @@
 module.exports = function(RED) {
     "use strict";
     
-    var DEBUG   = false;
+    var DEBUG   = true;
     var MAXLEN  = 160;
     var request = require('request');
 
@@ -16,16 +16,15 @@ module.exports = function(RED) {
                            request.post(
                                req_url,
                                function(error, response, body) {
-                                   console.log("Clickatel POST:")
-                                   node.send("Clickatel POST:");
+                                   console.log("Clickatell POST:")
+                                   console.log(req_url);
+                                   console.log(body);
                                    if (!error && response.statusCode == 200) {
-                                    if (DEBUG){
-                                       console.log(body, response)
-                                    }
-                                    console.log(req_url)
-                                    console.log(body)
-                                    node.send(body);
-                                   }
+                                       node.send({topic:"Clickatell POST:",payload:body});
+                                   } else {
+                                       console.log(error);
+                                       node.send({topic:"Clickatell ERROR:",payload:error});
+				}
                                }
                            );
             }
@@ -35,8 +34,8 @@ module.exports = function(RED) {
                            request.get(
                                bal_query,
                                function(error, response, body) {
-                                   console.log("Clickatel GET:")
-                                   node.send("Clickatel GET:");
+                                   console.log("Clickatell GET:")
+                                   node.send("Clickatell GET:");
                                    if (!error && response.statusCode == 200) {
                                     if (DEBUG){
                                        console.log(body, response)
@@ -64,8 +63,8 @@ module.exports = function(RED) {
             var number = msg.topic ||  n.mobile_default;
             var text = msg.payload ||  n.sms_default;
 
-            if (/\D/.test(number)) {
-                node.warn("Destination Number: " + numvalidator + "  contains invalid characters. Please enter a valid mobile number");
+            if (/\++\D/.test(number)) {
+                node.warn("Destination Number: contains invalid characters. Please enter a valid mobile number");
                 return;
             }
             
